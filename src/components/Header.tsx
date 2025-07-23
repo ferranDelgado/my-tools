@@ -10,25 +10,28 @@ const navLinks = [
   { to: "/my-tools", label: "Home" },
   { to: "/my-tools/about", label: "About" },
   { to: "/my-tools/contact", label: "Contact" },
+  { to: "/my-tools/jwt-reader", label: "JWT Reader" },
 ];
 
 const Header = () => {
   const location = useLocation();
   return (
     <header className="bg-background/80 backdrop-blur border-b border-border sticky top-0 z-50">
-      <nav className="container mx-auto flex flex-col items-center py-6">
-        <div className="text-2xl font-extrabold tracking-tight mb-3 text-primary">My Tools</div>
-        <NavigationMenu>
-          <NavigationMenuList>
-            {navLinks.map((link) => (
-              <NavigationMenuItem key={link.to}>
-                <NavigationMenuLink asChild active={location.pathname === link.to}>
-                  <Link to={link.to}>{link.label}</Link>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-            ))}
-          </NavigationMenuList>
-        </NavigationMenu>
+      <nav className="container mx-auto flex flex-row items-center justify-between py-6">
+        <div className="text-2xl font-extrabold tracking-tight text-primary flex-shrink-0">My Tools</div>
+        <div className="flex-1 flex justify-center">
+          <NavigationMenu>
+            <NavigationMenuList>
+              {navLinks.map((link) => (
+                <NavigationMenuItem key={link.to}>
+                  <NavigationMenuLink asChild active={location.pathname === link.to}>
+                    <Link to={link.to}>{link.label}</Link>
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+              ))}
+            </NavigationMenuList>
+          </NavigationMenu>
+        </div>
       </nav>
     </header>
   );

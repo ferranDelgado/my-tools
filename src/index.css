@@ -1,15 +1,1 @@
 @import "tailwindcss";
-
-/* Optional: shadcn/ui theming or custom styles */
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 47.4% 11.2%;
-    /* Add more CSS variables if you use shadcn/ui themes */
-  }
-
-  .dark {
-    --background: 222.2 47.4% 11.2%;
-    --foreground: 210 40% 98%;
-  }
-}
