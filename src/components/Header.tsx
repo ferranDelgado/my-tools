@@ -11,6 +11,7 @@ const navLinks = [
   { to: "/my-tools/about", label: "About" },
   { to: "/my-tools/contact", label: "Contact" },
   { to: "/my-tools/jwt-reader", label: "JWT Reader" },
+  { to: "/my-tools/exif-reader", label: "Exif Reader" },
 ];
 
 const Header = () => {
