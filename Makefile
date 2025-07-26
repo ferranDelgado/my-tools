@@ -22,5 +22,5 @@ build:
 dev:
 	npm run dev
 
-deploy:
+deploy: build
 	npm run deploy

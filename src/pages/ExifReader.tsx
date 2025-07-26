@@ -18,15 +18,6 @@ function stripExifFromDataUrl(dataUrl: string, mimeType = "image/jpeg"): Promise
   });
 }
 
-function arrayBufferToDataUrl(buffer: ArrayBuffer, mimeType = "image/jpeg"): string {
-  const bytes = new Uint8Array(buffer);
-  let binary = "";
-  for (let i = 0; i < bytes.byteLength; i++) {
-    binary += String.fromCharCode(bytes[i]);
-  }
-  return `data:${mimeType};base64,${window.btoa(binary)}`;
-}
-
 const ExifReaderPage: React.FC = () => {
   const [image, setImage] = useState<string | null>(null);
   const [exifData, setExifData] = useState<Record<string, any> | null>(null);
@@ -36,7 +27,7 @@ const ExifReaderPage: React.FC = () => {
   const [creating, setCreating] = useState<boolean>(false);
   const [creatingMPF, setCreatingMPF] = useState<{[idx: number]: boolean}>({});
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const [file, setFile] = useState<File | null>(null);
+  const [_, setFile] = useState<File | null>(null);
 
   const handleFile = async (file: File) => {
     setError("");
