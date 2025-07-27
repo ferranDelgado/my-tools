@@ -4,12 +4,19 @@ import {
   NavigationMenuList,
   NavigationMenuItem,
   NavigationMenuLink,
+  NavigationMenuTrigger,
+  NavigationMenuContent,
 } from "@/components/ui/navigation-menu";
 
 const navLinks = [
   { to: "/my-tools", label: "Home" },
   { to: "/my-tools/jwt-reader", label: "JWT Reader" },
-  { to: "/my-tools/exif-reader", label: "Exif Reader" },
+  // { to: "/my-tools/exif-reader", label: "Exif/Metadata Reader" },
+  { label: "Exif/Metadata Reader",
+    list: [
+    {to: "/my-tools/exif-reader", label: "Image"},
+    {to: "/my-tools/exif-reader", label: "Video"}
+  ] },
   { to: "/my-tools/uuid-generator", label: "UUID Generator" },
 ];
 
@@ -23,11 +30,30 @@ const Header = () => {
           <NavigationMenu>
             <NavigationMenuList>
               {navLinks.map((link) => (
-                <NavigationMenuItem key={link.to}>
-                  <NavigationMenuLink asChild active={location.pathname === link.to}>
-                    <Link to={link.to}>{link.label}</Link>
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
+                link.list ? (
+                  <NavigationMenuItem key={link.label}>
+                    <NavigationMenuTrigger>{link.label}</NavigationMenuTrigger>
+                    <NavigationMenuContent className="bg-white dark:bg-zinc-900 border border-border shadow-lg">
+                      <ul className="grid w-[300px] gap-4 p-4">
+                        {link.list.map((item) => (
+                          <li key={item.to}>
+                            <NavigationMenuLink asChild active={location.pathname === item.to}>
+                              <Link to={item.to}>
+                                <div className="font-medium">{item.label}</div>
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                        ))}
+                      </ul>
+                    </NavigationMenuContent>
+                  </NavigationMenuItem>
+                ) : (
+                  <NavigationMenuItem key={link.to}>
+                    <NavigationMenuLink asChild active={location.pathname === link.to}>
+                      <Link to={link.to}>{link.label}</Link>
+                    </NavigationMenuLink>
+                  </NavigationMenuItem>
+                )
               ))}
             </NavigationMenuList>
           </NavigationMenu>
