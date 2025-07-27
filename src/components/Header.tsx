@@ -8,16 +8,27 @@ import {
   NavigationMenuContent,
 } from "@/components/ui/navigation-menu";
 
-const navLinks = [
+type NavLinkItem = {
+  to: string;
+  label: string;
+}
+
+type NavLink = NavLinkItem | {
+  label: string;
+  list: Array<NavLinkItem>;
+};
+
+const navLinks: NavLink[] = [
   { to: "/my-tools", label: "Home" },
   { to: "/my-tools/jwt-reader", label: "JWT Reader" },
-  // { to: "/my-tools/exif-reader", label: "Exif/Metadata Reader" },
-  { label: "Exif/Metadata Reader",
+  { to: "/my-tools/exif-reader", label: "Exif Reader" },
+  /*{ label: "Exif/Metadata Reader",
     list: [
     {to: "/my-tools/exif-reader", label: "Image"},
     {to: "/my-tools/exif-reader", label: "Video"}
-  ] },
+  ] },*/
   { to: "/my-tools/uuid-generator", label: "UUID Generator" },
+  { to: "/my-tools/timezones", label: "Timezones" },
 ];
 
 const Header = () => {
@@ -25,12 +36,14 @@ const Header = () => {
   return (
     <header className="bg-background/80 backdrop-blur border-b border-border sticky top-0 z-50">
       <nav className="container mx-auto flex flex-row items-center justify-between py-6">
-        <div className="text-2xl font-extrabold tracking-tight text-primary flex-shrink-0">My Tools</div>
+        <div className="text-2xl font-extrabold tracking-tight text-primary flex-shrink-0">
+          <Link to="/my-tools">My Tools</Link>
+        </div>
         <div className="flex-1 flex justify-center">
           <NavigationMenu>
             <NavigationMenuList>
               {navLinks.map((link) => (
-                link.list ? (
+                'list' in link ? (
                   <NavigationMenuItem key={link.label}>
                     <NavigationMenuTrigger>{link.label}</NavigationMenuTrigger>
                     <NavigationMenuContent className="bg-white text-popover-foreground border border-border shadow-lg">
