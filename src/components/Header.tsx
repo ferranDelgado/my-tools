@@ -33,7 +33,7 @@ const Header = () => {
                 link.list ? (
                   <NavigationMenuItem key={link.label}>
                     <NavigationMenuTrigger>{link.label}</NavigationMenuTrigger>
-                    <NavigationMenuContent className="bg-white dark:bg-zinc-900 border border-border shadow-lg">
+                    <NavigationMenuContent className="bg-white text-popover-foreground border border-border shadow-lg">
                       <ul className="grid w-[300px] gap-4 p-4">
                         {link.list.map((item) => (
                           <li key={item.to}>
