@@ -2,6 +2,8 @@
 
 A modern web app providing a suite of handy developer utilities, built with React, TypeScript, and Tailwind CSS.
 
+This is deployed to [Github Pages](https://ferrandelgado.github.io/my-tools/)
+
 ## 🚀 Stack
 
 - **Framework:** [React 19](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
