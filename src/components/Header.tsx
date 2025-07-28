@@ -19,16 +19,16 @@ type NavLink = NavLinkItem | {
 };
 
 const navLinks: NavLink[] = [
-  { to: "/my-tools", label: "Home" },
-  { to: "/my-tools/jwt-reader", label: "JWT Reader" },
-  { to: "/my-tools/exif-reader", label: "Exif Reader" },
+  { to: "/", label: "Home" },
+  { to: "/jwt-reader", label: "JWT Reader" },
+  { to: "/exif-reader", label: "Exif Reader" },
   /*{ label: "Exif/Metadata Reader",
     list: [
-    {to: "/my-tools/exif-reader", label: "Image"},
-    {to: "/my-tools/exif-reader", label: "Video"}
+    {to: "/exif-reader", label: "Image"},
+    {to: "/exif-reader", label: "Video"}
   ] },*/
-  { to: "/my-tools/uuid-generator", label: "UUID Generator" },
-  { to: "/my-tools/timezones", label: "Timezones" },
+  { to: "/uuid-generator", label: "UUID Generator" },
+  { to: "/timezones", label: "Timezones" },
 ];
 
 const Header = () => {
@@ -37,7 +37,7 @@ const Header = () => {
     <header className="bg-background/80 backdrop-blur border-b border-border sticky top-0 z-50">
       <nav className="container mx-auto flex flex-row items-center justify-between py-6">
         <div className="text-2xl font-extrabold tracking-tight text-primary flex-shrink-0">
-          <Link to="/my-tools">My Tools</Link>
+          <Link to="/">My Tools</Link>
         </div>
         <div className="flex-1 flex justify-center">
           <NavigationMenu>
